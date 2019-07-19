@@ -51,7 +51,7 @@ int main()
 	}
 	char temp = arr[index];
 
-	for(int i = 1; i < n-1-index; i++)//input for array
+	for(int i = 1+index; i < n-1; i++)//input for array
 	{
 		cin>>arr[i];
 		if(arr[i] == temp)
@@ -71,13 +71,8 @@ int main()
 	
 	index = 0, j = 0;
 	
-	if(arr[0]=='=')
-	{
-		for(int i = 0; i < store.front(); i++)
-			index++;
-		flag = store.front();
-		store.pop_front();
-	}
+	while(arr[index]=='=')
+			index++, flag = store.front(), store.pop_front();
 	
 	
 	if(arr[index] == 'L')
