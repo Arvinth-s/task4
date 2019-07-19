@@ -34,15 +34,23 @@ int main()
 	char arr[n];
 	vector<int> hold;
 	list<int> store;
+	int value[n+1];
 	cin>>arr[0];
 	while(arr[index] == '=')
 	{
 		store.push_back(index+1);
 		index++;
 		cin>>arr[index];
+		if(index >= n-2)
+		{
+			for(int  i = 0; i < n; i++)
+				value[i] = 1;
+			printArray(value, n);
+			return 0;
+		}
 	}
 	char temp = arr[index];
-	int value[n];
+
 	for(int i = 1; i < n-1-index; i++)//input for array
 	{
 		cin>>arr[i];
@@ -89,12 +97,13 @@ int main()
 				else
 				value[index++] = 2 + i;
 				
-			if(index == store.front())
+			while(index == store.front())
 				act(value, index, store);
-		
+
 			value[index++] = maxy(hold[j+1]+1, hold[j+2]+1);
 			j += 2;
-			if(index == store.front())
+			
+			while(index == store.front())
 				act(value, index, store);
 		}
 		if(j+2 == hold.size())
@@ -111,12 +120,12 @@ int main()
 				else
 				value[index++] = 2 + i;
 			
-			if(index == store.front())
+			while(index == store.front())
 				act(value, index, store);
 				
 			value[index++] = hold[j+1]+1;
 			
-			if(index == store.front())
+			while(index == store.front())
 				act(value, index, store);
 		}
 		else if(j+1 == hold.size())
@@ -127,7 +136,7 @@ int main()
 				else
 					value[index++] = hold[j] - i;
 		}
-			if(index == store.front())
+			while(index == store.front())
 				act(value, index, store);		
 		
 	}
@@ -143,7 +152,7 @@ int main()
 				else
 					value[index++] = 2+i;
 			
-			if(index == store.front())
+			while(index == store.front())
 				act(value, index, store);
 
 			value[index++] = maxy(hold[j] + 1, hold[j+1] + 1);
@@ -154,7 +163,7 @@ int main()
 				else
 				value[index++] = hold[j+1]-i;
 
-			if(index == store.front())
+			while(index == store.front())
 				act(value, index, store);			
 			j += 2;
 		}
@@ -166,12 +175,12 @@ int main()
 				else
 					value[index++] = 2+i;
 			
-			if(index == store.front())
+			while(index == store.front())
 				act(value, index, store);
 				
 			value[index++] = hold[j] + 1;
 			
-			if(index == store.front())
+			while(index == store.front())
 				act(value, index, store);
 		}
 	}
@@ -181,4 +190,5 @@ int main()
 			value[i] = value[flag];
 	}
 	printArray(value, n);
+	return 0;
 }
