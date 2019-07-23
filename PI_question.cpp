@@ -23,7 +23,6 @@ int main()
 	int sum  = 0; 
 	vector<int>::iterator itr;
 	for(itr = index.end() - 1; itr != index.begin(); itr--)
-		sum += pow(2, *itr)*(*itr) + 1, cout<<sum<<"\t";
-	cout<<endl;
+		sum += pow(2, *itr)*(*itr) + 1;
 	cout<<"ans:"<<sum;
 }
